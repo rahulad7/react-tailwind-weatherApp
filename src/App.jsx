@@ -1,18 +1,37 @@
-// import UilReact from "@iconscout/react-unicons/icons/uil-react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./index.css";
+
 import Searchbar from "./components/Searchbar";
 import TimeAndLocation from "./components/TimeAndLocation";
 import Tempertature from "./components/Tempertature";
-import DayForecast from "./components/DayForecast";
-import "./index.css";
+import FutureForecast from "./components/FutureForecast";
 
 const App = () => {
+  const [data, setData] = useState([]);
+  const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=1d35dcc8063b4122ad764306233001&q=belgaum&days=7`;
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get(apiUrl).then((res) => {
+      setData(res.data);
+      setLoading(false);
+      console.log(res.data);
+    });
+  }, []);
+
   return (
     <div className="mx-auto max-w-screen-md mt-4 bg-gradient-to-br from-cyan-400 to-blue-700 h-fit shadow-xl py-8 shadow-gray-400">
-      {/* <UilReact /> */}
-      <Searchbar />
-      <TimeAndLocation />
-      <Tempertature />
-      <DayForecast />
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <Searchbar />
+          <TimeAndLocation data={data} />
+          <Tempertature data={data} />
+          <FutureForecast data={data} />
+        </>
+      )}
     </div>
   );
 };

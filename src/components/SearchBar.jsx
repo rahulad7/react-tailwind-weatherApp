@@ -1,5 +1,6 @@
 import { UilSearch } from "@iconscout/react-unicons";
-const Searchbar = () => {
+
+function Searchbar() {
   return (
     <div className="flex flex-row justify-center mb-6 mt-2">
       <div className="flex flex-row w-3/4 items-center space-x-3">
@@ -15,6 +16,6 @@ const Searchbar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Searchbar;

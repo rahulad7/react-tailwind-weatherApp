@@ -1,52 +1,39 @@
-import {
-  UilTemperature,
-  UilTear,
-  UilWind,
-  UilSun,
-  UilSunset,
-} from "@iconscout/react-unicons";
+import { UilSun, UilSunset } from "@iconscout/react-unicons";
+import CurrentConditions from "./CurrentConditons";
 
-const Tempertature = () => {
+function Tempertature({ data }) {
   return (
     <div>
       <div className="flex justify-center my-6 items-center text-xl text-cyan-300">
-        Cloudy
+        {data.current.condition.text}
       </div>
 
       <div className="flex flex-row  items-center justify-evenly text-white py-3">
-        <img src="./icon.png" alt="" className="w-20" />
-        <p className="text-4xl">33°c</p>
+        <img src={data.current.condition.icon} alt="" className="w-20" />
+        <p className="text-4xl">{data.current.temp_c} °c</p>
         <div className="flex flex-col space-y-2">
-          <div className="flex font-light text-sm items-center justify-center">
-            <UilTemperature size={18} className="mr-1" />
-            Real fell:
-            <span className="font-medium ml-1">32°c</span>
-          </div>
-          <div className="flex font-light text-sm items-center justify-center">
-            <UilTear size={18} className="mr-1" />
-            Humidity:
-            <span className="font-medium ml-1">40%</span>
-          </div>
-          <div className="flex font-light text-sm items-center justify-center">
-            <UilWind size={18} className="mr-1" />
-            wind:
-            <span className="font-medium ml-1">2km/h</span>
-          </div>
+          <CurrentConditions data={data} />
         </div>
       </div>
       <div className="flex flex-row items-center justify-center space-x-2 text-white text-sm py-3">
         <UilSun />
         <p className="font-light">
-          Rise: <span className="font-medium ml-1">06:45 AM</span>
+          Rise:{" "}
+          <span className="font-medium ml-1">
+            {data.forecast.forecastday[0].astro.sunrise}
+          </span>
         </p>
         <div>|</div>
         <UilSunset />
         <p className="font-light">
-          Rise: <span className="font-medium ml-1">06:45 AM</span>
+          Set:{" "}
+          <span className="font-medium ml-1">
+            {data.forecast.forecastday[0].astro.sunset}
+          </span>
         </p>
       </div>
     </div>
   );
-};
+}
 
 export default Tempertature;
