@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 const TimeAndLocation = ({ data }) => {
   return (
     <div className="justify-center">
@@ -19,6 +20,15 @@ const TimeAndLocation = ({ data }) => {
       </div>
     </div>
   );
+};
+
+TimeAndLocation.propTypes = {
+  data: PropTypes.shape({
+    location: PropTypes.shape({
+      localtime: PropTypes.string,
+      name: PropTypes.string,
+    }),
+  }),
 };
 
 export default TimeAndLocation;

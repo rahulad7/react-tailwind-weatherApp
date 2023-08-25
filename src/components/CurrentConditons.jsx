@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { UilTemperature, UilTear, UilWind } from "@iconscout/react-unicons";
 
 function CurrentConditions({ data }) {
@@ -21,5 +22,15 @@ function CurrentConditions({ data }) {
     </div>
   );
 }
+
+CurrentConditions.propTypes = {
+  data: PropTypes.shape({
+    current: PropTypes.shape({
+      feelslike_c: PropTypes.number,
+      humidity: PropTypes.number,
+      wind_kph: PropTypes.number,
+    }),
+  }).isRequired,
+};
 
 export default CurrentConditions;

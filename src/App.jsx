@@ -18,7 +18,7 @@ const App = () => {
       setLoading(false);
       console.log(res.data);
     });
-  }, []);
+  }, [apiUrl]);
 
   return (
     <div className="mx-auto max-w-screen-md mt-4 bg-gradient-to-br from-cyan-400 to-blue-700 h-fit shadow-xl py-8 shadow-gray-400">

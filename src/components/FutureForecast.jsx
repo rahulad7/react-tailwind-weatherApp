@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function FutureForecast({ data }) {
   return (
     <div>
@@ -61,5 +62,24 @@ function FutureForecast({ data }) {
     </div>
   );
 }
+// new Date(data.forecast.forecastday[0].date).toLocaleString
+
+FutureForecast.propTypes = {
+  data: PropTypes.shape({
+    forecast: PropTypes.shape({
+      forecastday: PropTypes.arrayOf(
+        PropTypes.shape({
+          date: PropTypes.string,
+          day: PropTypes.shape({
+            condition: PropTypes.shape({
+              icon: PropTypes.string,
+            }),
+            avgtemp_c: PropTypes.number,
+          }),
+        })
+      ),
+    }),
+  }).isRequired,
+};
 
 export default FutureForecast;

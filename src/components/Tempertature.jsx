@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { UilSun, UilSunset } from "@iconscout/react-unicons";
 import CurrentConditions from "./CurrentConditons";
 
@@ -35,5 +36,25 @@ function Tempertature({ data }) {
     </div>
   );
 }
+
+Tempertature.propTypes = {
+  data: PropTypes.shape({
+    current: PropTypes.shape({
+      temp_c: PropTypes.number,
+      condition: PropTypes.shape({
+        text: PropTypes.string,
+        icon: PropTypes.string,
+      }),
+    }),
+    forecast: PropTypes.shape({
+      forecastday: PropTypes.arrayOf({
+        astro: PropTypes.shape({
+          sunrise: PropTypes.string,
+          sunset: PropTypes.string,
+        }),
+      }),
+    }),
+  }),
+};
 
 export default Tempertature;
