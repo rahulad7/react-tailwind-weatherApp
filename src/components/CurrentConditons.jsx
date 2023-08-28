@@ -1,7 +1,9 @@
-import PropTypes from "prop-types";
 import { UilTemperature, UilTear, UilWind } from "@iconscout/react-unicons";
+import { useContext } from "react";
+import { WeatherContext } from "./WeatherContext";
 
-function CurrentConditions({ data }) {
+function CurrentConditions() {
+  const { data } = useContext(WeatherContext);
   return (
     <div className="space-y-2">
       <div className="flex font-light text-sm items-center justify-center">
@@ -22,15 +24,5 @@ function CurrentConditions({ data }) {
     </div>
   );
 }
-
-CurrentConditions.propTypes = {
-  data: PropTypes.shape({
-    current: PropTypes.shape({
-      feelslike_c: PropTypes.number,
-      humidity: PropTypes.number,
-      wind_kph: PropTypes.number,
-    }),
-  }).isRequired,
-};
 
 export default CurrentConditions;

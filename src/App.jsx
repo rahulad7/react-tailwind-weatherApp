@@ -6,6 +6,7 @@ import Searchbar from "./components/Searchbar";
 import TimeAndLocation from "./components/TimeAndLocation";
 import Tempertature from "./components/Tempertature";
 import FutureForecast from "./components/FutureForecast";
+import { WeatherContext } from "./components/WeatherContext";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -26,10 +27,12 @@ const App = () => {
         <p>Loading...</p>
       ) : (
         <>
-          <Searchbar />
-          <TimeAndLocation data={data} />
-          <Tempertature data={data} />
-          <FutureForecast data={data} />
+          <WeatherContext.Provider value={{ data }}>
+            <Searchbar />
+            <TimeAndLocation />
+            <Tempertature />
+            <FutureForecast />
+          </WeatherContext.Provider>
         </>
       )}
     </div>

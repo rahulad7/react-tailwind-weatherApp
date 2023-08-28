@@ -1,5 +1,8 @@
-import PropTypes from "prop-types";
-const TimeAndLocation = ({ data }) => {
+import { useContext } from "react";
+import { WeatherContext } from "./WeatherContext";
+
+const TimeAndLocation = () => {
+  const { data } = useContext(WeatherContext);
   return (
     <div className="justify-center">
       <div className="justify-center flex items-center my-6">
@@ -20,15 +23,6 @@ const TimeAndLocation = ({ data }) => {
       </div>
     </div>
   );
-};
-
-TimeAndLocation.propTypes = {
-  data: PropTypes.shape({
-    location: PropTypes.shape({
-      localtime: PropTypes.string,
-      name: PropTypes.string,
-    }),
-  }),
 };
 
 export default TimeAndLocation;

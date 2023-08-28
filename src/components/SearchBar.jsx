@@ -8,7 +8,10 @@ function Searchbar() {
           type="text"
           placeholder="Enter City Name..."
           className=" font-light p-2 w-full shadow-xl focus:outline-none rounded "
+          // onChange={}
+          // value={}
         />
+
         <UilSearch
           size={30}
           className="text-white cursor-pointer transition ease-out hover:scale-125"
