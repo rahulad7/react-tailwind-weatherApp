@@ -9,8 +9,9 @@ import FutureForecast from "./components/FutureForecast";
 import { WeatherContext } from "./components/WeatherContext";
 
 const App = () => {
+  const [city, setCity] = useState("haliyal");
   const [data, setData] = useState([]);
-  const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=1d35dcc8063b4122ad764306233001&q=belgaum&days=7`;
+  const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=1d35dcc8063b4122ad764306233001&q=${city}&days=7`;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const App = () => {
       ) : (
         <>
           <WeatherContext.Provider value={{ data }}>
-            <Searchbar />
+            <Searchbar setCity={setCity} />
             <TimeAndLocation />
             <Tempertature />
             <FutureForecast />
