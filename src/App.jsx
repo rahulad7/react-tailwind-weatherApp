@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./index.css";
 
-import Searchbar from "./components/Searchbar";
+import SearchBar from "./components/SearchBar";
 import TimeAndLocation from "./components/TimeAndLocation";
 import Tempertature from "./components/Tempertature";
 import FutureForecast from "./components/FutureForecast";
@@ -29,7 +29,7 @@ const App = () => {
       ) : (
         <>
           <WeatherContext.Provider value={{ data }}>
-            <Searchbar setCity={setCity} />
+            <SearchBar setCity={setCity} />
             <TimeAndLocation />
             <Tempertature />
             <FutureForecast />
